@@ -1,0 +1,9 @@
+README.md
+setup.py
+infobatch/__init__.py
+infobatch/infobatch.py
+infobatch.egg-info/PKG-INFO
+infobatch.egg-info/SOURCES.txt
+infobatch.egg-info/dependency_links.txt
+infobatch.egg-info/requires.txt
+infobatch.egg-info/top_level.txt
