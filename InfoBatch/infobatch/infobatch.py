@@ -81,6 +81,11 @@ class InfoBatch(Dataset):
         self.weights = torch.ones(len(self.dataset))
         self.num_pruned_samples = 0
         self.cur_batch_index = None
+        self.indices_record = []
+
+    def reset_record(self):
+        self.indices_record = []
+        return
 
     def set_active_indices(self, cur_batch_indices: torch.Tensor):
         self.cur_batch_index = cur_batch_indices
@@ -128,6 +133,7 @@ class InfoBatch(Dataset):
             self.weights[selected_indices] = 1 / self.keep_ratio
             remained_indices.extend(selected_indices)
         self.num_pruned_samples += len(self.dataset) - len(remained_indices)
+        self.indices_record.extend(remained_indices)
         np.random.shuffle(remained_indices)
         return remained_indices
 
